@@ -20,7 +20,7 @@ st.title("QuizGPT")
 
 quiz_function = {
     "name": "create_quiz",
-    "description": "function that takes a list of questions and answers and returns a quiz",
+    "description": "This function takes a list of questions and their corresponding answers, shuffles the order of answers for each question to ensure the correct answer is not always the first option, and returns a randomized quiz. It is designed to promote fairness and prevent predictability in multiple-choice quizzes.",
     "parameters": {
         "type": "object",
         "properties": {
@@ -67,6 +67,8 @@ prompt = ChatPromptTemplate.from_messages(
     Based ONLY on the following context make 10 {difficulty} questions to test the user's knowledge about the text.
 
     Each question should have 4 answers, three of them must be incorrect and one should be correct.
+
+    And please make the answer numbers as random as possible.
 
     Context: {context}
     """,
