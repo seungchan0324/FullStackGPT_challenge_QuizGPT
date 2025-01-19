@@ -115,6 +115,7 @@ def run_quiz_chain(_format_doc, difficulty, topic):
     return chain.invoke({"context": _format_doc, "difficulty": difficulty})
 
 
+correct = 0
 with st.sidebar:
     st.write("https://github.com/seungchan0324/FullStackGPT_challenge_QuizGPT")
     key = st.text_input("Please give me your API Key!")
@@ -191,7 +192,11 @@ else:
                 index=None,
             )
             if {"answer": value, "correct": True} in question["answers"]:
+                correct += 1
                 st.success("Correct!")
             elif value is not None:
                 st.error("Wrong")
-        button = st.form_submit_button()
+        button = st.form_submit_button(disabled=correct == len(response["questions"]))
+
+    if correct == len(response["questions"]):
+        st.balloons()
