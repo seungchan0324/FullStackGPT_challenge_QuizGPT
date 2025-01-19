@@ -151,19 +151,19 @@ with st.sidebar:
             if topic:
                 docs = wiki_search(topic)
 
-llm = ChatOpenAI(
-    temperature=0.1,
-    model="gpt-4o-mini-2024-07-18",
-    streaming=True,
-    callbacks=[
-        StreamingStdOutCallbackHandler(),
-    ],
-    api_key=key,
-).bind(
-    # function_call="auto" (자유롭게 function을 사용하도록 지시 할 때에.)
-    function_call={"name": "create_quiz"},
-    functions=[quiz_function],
-)
+        llm = ChatOpenAI(
+            temperature=0.1,
+            model="gpt-4o-mini-2024-07-18",
+            streaming=True,
+            callbacks=[
+                StreamingStdOutCallbackHandler(),
+            ],
+            api_key=key,
+        ).bind(
+            # function_call="auto" (자유롭게 function을 사용하도록 지시 할 때에.)
+            function_call={"name": "create_quiz"},
+            functions=[quiz_function],
+        )
 
 if not docs:
     st.markdown(
