@@ -116,8 +116,8 @@ def run_quiz_chain(_format_doc, difficulty, topic):
 
 
 with st.sidebar:
-    st.write("https://github.com/seungchan0324/FullStackGPT_Challenge")
-    key = st.text_input("pls give me ur API Key!")
+    st.write("https://github.com/seungchan0324/FullStackGPT_challenge_QuizGPT")
+    key = st.text_input("Please give me your API Key!")
     docs = None
     topic = None
     if key:
